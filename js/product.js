@@ -1,6 +1,6 @@
 import pagination from './components/pagination.js';
-import productModal from './components/product-model.js';
-import delProductModal from './components/del-product-model.js';
+import productModal from './components/product-modal.js';
+import delProductModal from './components/del-product-modal.js';
 
 
 const app = Vue.createApp({
@@ -49,7 +49,7 @@ const app = Vue.createApp({
     const token = document.cookie.split('; ')
     .find(row => row.startsWith('token='))
     .split('=')[1];
-    
+
     if (token === '') {
       window.location = 'index.html';
     }

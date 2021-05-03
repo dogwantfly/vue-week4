@@ -3,12 +3,12 @@ export default {
   template: '#productModal',
   data() {
     return {
-      model: null
+      modal: null
     }
   },
   methods: {
     openModal() {
-      this.model.show();
+      this.modal.show();
     },
     // 更新資料
     updateProduct() {
@@ -31,7 +31,7 @@ export default {
       axios[httpMethod](api,{data: this.tempProduct})
         .then(response => {
             if (!response.data.success) return;
-            this.model.hide();
+            this.modal.hide();
             this.$emit('update');
         })
         .catch(error => {
@@ -41,7 +41,7 @@ export default {
   },
   mounted() {
     // 建立 instance
-    this.model = new bootstrap.Modal(this.$refs.modal, {
+    this.modal = new bootstrap.Modal(this.$refs.modal, {
       keyboard: false
     });
   }

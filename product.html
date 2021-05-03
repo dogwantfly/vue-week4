@@ -46,9 +46,9 @@
           <!-- 分頁 -->
           <pagination :pagination="pagination" @change-page="getProduct"></pagination>
         </div>
-        <!-- productModel -->
+        <!-- productModal -->
         <product-modal :temp-product="tempProduct" :products="products" ref="productModal" @update="getProduct"></product-modal>
-        <!-- delProductModel   -->
+        <!-- delProductModal   -->
         <del-product-modal :temp-product="tempProduct" :products="products" ref="delProductModal" @delete="getProduct"></del-product-modal>
     </div>
     <!-- axios -->
@@ -143,8 +143,8 @@
         </div>
       </div>
     </script>
-    <!-- delProductModel -->
-    <script type="text/x-template" id="delProductModel">
+    <!-- delProductModal -->
+    <script type="text/x-template" id="delProductModal">
       <div class="modal fade" id="delProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" ref="modal">
         <div class="modal-dialog">
           <div class="modal-content">

@@ -1,14 +1,14 @@
 export default {
   props: ['temp-product','products'],
-  template: '#delProductModel',
+  template: '#delProductModal',
   data() {
     return {
-      model: null
+      modal: null
     }
   },
   methods: {
     openModal() {
-      this.model.show();
+      this.modal.show();
     },
     // 刪除資料
     deleteProduct() {
@@ -19,7 +19,7 @@ export default {
             const api = `/api/${apiPath}/admin/product/${id}`;
             axios.delete(api,{data: this.tempProduct})
               .then(response => {
-                  this.model.hide();
+                  this.modal.hide();
                   this.$emit('delete');
               })
               .catch(error => {
@@ -32,7 +32,7 @@ export default {
   },
   mounted() {
     // 建立 instance
-    this.model = new bootstrap.Modal(this.$refs.modal, {
+    this.modal = new bootstrap.Modal(this.$refs.modal, {
       keyboard: false
     });
   }
