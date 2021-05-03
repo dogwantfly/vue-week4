@@ -30,7 +30,6 @@ export default {
       }
       axios[httpMethod](api,{data: this.tempProduct})
         .then(response => {
-            console.log(response);
             if (!response.data.success) return;
             this.model.hide();
             this.$emit('update');

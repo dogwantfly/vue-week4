@@ -19,7 +19,6 @@ export default {
             const api = `/api/${apiPath}/admin/product/${id}`;
             axios.delete(api,{data: this.tempProduct})
               .then(response => {
-                  console.log(response);
                   this.model.hide();
                   this.$emit('delete');
               })

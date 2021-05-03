@@ -36,10 +36,8 @@ const app = Vue.createApp({
         const api = `/api/${apiPath}/admin/products?page=${page}`;
         axios.get(api)
             .then(response => {
-                console.log(response);
                 this.products = response.data.products;
                 this.pagination = response.data.pagination;
-                console.log(this);
             })
             .catch(error => {
                 console.log(error);
