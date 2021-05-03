@@ -49,6 +49,10 @@ const app = Vue.createApp({
     const token = document.cookie.split('; ')
     .find(row => row.startsWith('token='))
     .split('=')[1];
+    
+    if (token === '') {
+      window.location = 'index.html';
+    }
     // 設定 request headers
     axios.defaults.headers.common['Authorization'] = token;
     // 取商品資料
