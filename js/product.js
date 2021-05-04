@@ -10,7 +10,8 @@ const app = Vue.createApp({
       tempProduct: {
         options: {}
       },
-      pagination: {}
+      pagination: {},
+      isNew: false
     };
   },
   methods: {
@@ -19,10 +20,12 @@ const app = Vue.createApp({
         case "new":
           this.tempProduct = {};
           this.tempProduct.options = {};
+          this.isNew = true;
           this.$refs.productModal.openModal();
           break;
         case "edit":
           this.tempProduct = { ...item };
+          this.isNew = false;
           this.$refs.productModal.openModal();
           break;
         case "delete":
@@ -36,6 +39,7 @@ const app = Vue.createApp({
         const api = `/api/${apiPath}/admin/products?page=${page}`;
         axios.get(api)
             .then(response => {
+              if (!response.data.success) return;
                 this.products = response.data.products;
                 this.pagination = response.data.pagination;
             })

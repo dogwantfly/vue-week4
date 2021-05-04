@@ -1,5 +1,5 @@
 export default {
-  props: ['temp-product','products'],
+  props: ['temp-product'],
   template: '#delProductModal',
   data() {
     return {
@@ -14,19 +14,16 @@ export default {
     deleteProduct() {
       let id = this.tempProduct.id;
       if (id) {
-        this.products.forEach((product) => {
-          if (product.id === id) {
-            const api = `/api/${apiPath}/admin/product/${id}`;
-            axios.delete(api,{data: this.tempProduct})
-              .then(response => {
-                  this.modal.hide();
-                  this.$emit('delete');
-              })
-              .catch(error => {
-                  console.log(error);
-              })
-          }
-        });
+        const api = `/api/${apiPath}/admin/product/${id}`;
+        axios.delete(api,{data: this.tempProduct})
+          .then(response => {
+            if (!response.data.success) return;
+              this.modal.hide();
+              this.$emit('delete');
+          })
+          .catch(error => {
+              console.log(error);
+          })
       }
     }
   },

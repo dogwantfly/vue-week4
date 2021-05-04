@@ -1,5 +1,5 @@
 export default {
-  props: ['temp-product','products'],
+  props: ['temp-product','isNew'],
   template: '#productModal',
   data() {
     return {
@@ -17,12 +17,8 @@ export default {
       let httpMethod = 'post';
       if (id) {
         // 編輯商品
-        this.products.forEach((product, index) => {
-          if (product.id === id) {
-            api = `/api/${apiPath}/admin/product/${id}`
-            httpMethod = 'put';
-          }
-        });
+        api = `/api/${apiPath}/admin/product/${id}`
+        httpMethod = 'put';
       } else {
         // 建立新商品
         this.tempProduct.id = new Date().getTime();
